@@ -9,7 +9,6 @@ import requests
 import config
 import pickle
 import io
-from datetime import datetime
 import torch
 from torchvision import transforms
 from PIL import Image
@@ -17,7 +16,7 @@ from utils.model import ResNet9
 from flask import jsonify
 from flask import abort
 import random
-import crops
+from datetime import datetime
 # ==============================================================================================
 
 # -------------------------LOADING THE TRAINED MODELS -----------------------------------------------
@@ -453,7 +452,6 @@ def crop_profile():
     forecast_x = [i[0] for i in forecast_crop_values]
     forecast_y = [i[1] for i in forecast_crop_values]
     current_price = CurrentMonth(name)
-    crop_data = crops.crop(name)
     mapping = dict(zip(forecast_x, forecast_y))
     print(mapping)
     return mapping
